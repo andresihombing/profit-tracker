@@ -130,11 +130,17 @@ export function resolveDateRange(params: {
 
   if (preset === "week") {
     const start = startOfWeekMonday(today);
-    return { preset, start, end: addDays(start, 6) };
+    const weekEnd = addDays(start, 6);
+    return { preset, start, end: weekEnd.getTime() > today.getTime() ? today : weekEnd };
   }
 
   if (preset === "month") {
-    return { preset, start: startOfMonth(today), end: endOfMonth(today) };
+    const monthEnd = endOfMonth(today);
+    return {
+      preset,
+      start: startOfMonth(today),
+      end: monthEnd.getTime() > today.getTime() ? today : monthEnd,
+    };
   }
 
   const start = parseDateOnly(params.from ?? "") ?? startOfMonth(today);

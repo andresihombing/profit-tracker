@@ -38,7 +38,7 @@ describe("resolveDateRange", () => {
   it("memakai bulan berjalan", () => {
     const range = resolveDateRange({ preset: "month", now });
     expect(formatDateOnly(range.start)).toBe("2026-09-01");
-    expect(formatDateOnly(range.end)).toBe("2026-09-30");
+    expect(formatDateOnly(range.end)).toBe("2026-09-06");
   });
 
   it("menerima rentang kustom dan menukar jika terbalik", () => {

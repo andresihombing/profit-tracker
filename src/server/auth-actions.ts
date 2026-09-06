@@ -1,6 +1,7 @@
 "use server";
 
 import { AuthError } from "next-auth";
+import { redirect } from "next/navigation";
 import { signIn, signOut } from "@/auth";
 import { loginSchema } from "@/validations/auth";
 
@@ -25,15 +26,16 @@ export async function loginAction(
     await signIn("credentials", {
       email: parsed.data.email,
       password: parsed.data.password,
-      redirectTo: "/dashboard",
+      redirect: false,
     });
-    return {};
   } catch (error) {
     if (error instanceof AuthError) {
       return { error: "Email atau kata sandi tidak valid." };
     }
     throw error;
   }
+
+  redirect("/dashboard");
 }
 
 export async function logoutAction() {
