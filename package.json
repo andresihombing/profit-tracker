@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev --hostname 0.0.0.0 --port 43123",
-    "build": "prisma generate && prisma migrate deploy && next build",
+    "build": "export DATABASE_URL_UNPOOLED=\"${DATABASE_URL_UNPOOLED:-${DIRECT_URL:-$DATABASE_URL}}\" && prisma generate && prisma migrate deploy && next build",
     "start": "next start --hostname 0.0.0.0 --port 43123",
     "lint": "eslint",
     "test": "vitest run",
