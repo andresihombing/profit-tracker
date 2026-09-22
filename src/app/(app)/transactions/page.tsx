@@ -27,7 +27,7 @@ export default async function TransactionsPage({
         <div>
           <h2 className="text-2xl font-semibold tracking-tight">Transaksi</h2>
           <p className="mt-1 text-sm text-muted-foreground">
-            Semua catatan penjualan dan modal, diurutkan dari tanggal terbaru.
+            Semua catatan penjualan dan modal milik Anda, diurutkan dari tanggal terbaru.
           </p>
         </div>
         <Link href="/transactions/new" className={cn(buttonVariants())}>

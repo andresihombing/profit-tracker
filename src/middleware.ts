@@ -4,7 +4,7 @@ import { authConfig } from "@/auth.config";
 
 const { auth } = NextAuth(authConfig);
 
-const publicPaths = new Set(["/login"]);
+const publicPaths = new Set(["/login", "/register"]);
 
 export default auth((request) => {
   const { pathname } = request.nextUrl;
@@ -17,7 +17,7 @@ export default auth((request) => {
     return NextResponse.redirect(loginUrl);
   }
 
-  if (isAuthenticated && pathname === "/login") {
+  if (isAuthenticated && publicPaths.has(pathname)) {
     return NextResponse.redirect(new URL("/dashboard", request.nextUrl.origin));
   }
 

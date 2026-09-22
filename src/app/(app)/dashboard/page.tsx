@@ -33,7 +33,9 @@ export default async function DashboardPage({
       <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
         <div>
           <h2 className="text-2xl font-semibold tracking-tight">Dashboard</h2>
-          <p className="mt-1 text-sm text-muted-foreground">{rangeLabel(range)}</p>
+          <p className="mt-1 text-sm text-muted-foreground">
+            Ringkasan keuangan akun Anda · {rangeLabel(range)}
+          </p>
         </div>
         <Link href="/transactions/new" className={cn(buttonVariants())}>
           <Plus className="size-4" />

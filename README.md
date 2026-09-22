@@ -7,17 +7,18 @@ Aplikasi web untuk mencatat penjualan, modal, dan keuntungan bisnis harian. Keun
 - Next.js (App Router) + TypeScript
 - Tailwind CSS + shadcn/ui
 - PostgreSQL + Prisma
-- Auth.js (NextAuth) dengan credentials (siap dikembangkan ke multi-user)
+- Auth.js (NextAuth) dengan credentials (multi-user)
 - Zod + React Hook Form
 - Recharts
 
 ## Fitur
 
+- Registrasi akun dan login
+- Data terisolasi per pengguna (setiap akun hanya melihat dan mengelola transaksinya sendiri)
 - Dashboard dengan kartu ringkasan, filter tanggal, grafik, dan tabel
 - CRUD transaksi (profit dihitung di server, tidak diinput manual)
 - Laporan bulanan + export CSV
 - Kerugian ditampilkan jika modal lebih besar dari penjualan
-- Akun demo dengan data seed
 
 ## Menjalankan secara lokal
 
@@ -35,21 +36,15 @@ cp .env.example .env
 
 Isi `AUTH_SECRET` dengan string acak yang panjang. `DATABASE_URL` default cocok dengan `docker-compose.yml`.
 
-3. Install, migrasi, dan seed:
+3. Install dan migrasi:
 
 ```bash
 npm install
 npx prisma migrate deploy
-npx prisma db seed
 npm run dev
 ```
 
-Aplikasi berjalan di [http://localhost:43123](http://localhost:43123).
-
-Akun demo:
-
-- Email: `demo@profittracker.app`
-- Kata sandi: `demo1234`
+Aplikasi berjalan di [http://localhost:43123](http://localhost:43123). Daftar akun baru di `/register`, lalu mulai mencatat transaksi.
 
 ## Skrip
 
@@ -59,7 +54,7 @@ Akun demo:
 | `npm run build` | Production build |
 | `npm test` | Unit test (profit, filter tanggal, validasi) |
 | `npm run lint` | ESLint |
-| `npm run db:seed` | Isi data dummy |
+| `npm run db:seed` | Hapus akun demo lama (jika masih ada) |
 
 ## Struktur
 

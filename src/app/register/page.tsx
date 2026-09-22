@@ -1,30 +1,30 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { AuthCard } from "@/components/auth/auth-card";
-import { LoginForm } from "@/components/auth/login-form";
+import { RegisterForm } from "@/components/auth/register-form";
 
 export const metadata: Metadata = {
-  title: "Masuk",
+  title: "Daftar",
 };
 
-export default function LoginPage() {
+export default function RegisterPage() {
   return (
     <AuthCard
-      title="Profit Tracker"
-      description="Masuk untuk mencatat penjualan, modal, dan keuntungan harian."
+      title="Buat akun"
+      description="Daftar untuk mencatat penjualan, modal, dan keuntungan milik Anda sendiri."
       footer={
         <p className="mt-6 text-center text-sm text-muted-foreground">
-          Belum punya akun?{" "}
+          Sudah punya akun?{" "}
           <Link
-            href="/register"
+            href="/login"
             className="font-medium text-zinc-900 underline-offset-4 hover:underline"
           >
-            Daftar
+            Masuk
           </Link>
         </p>
       }
     >
-      <LoginForm />
+      <RegisterForm />
     </AuthCard>
   );
 }
